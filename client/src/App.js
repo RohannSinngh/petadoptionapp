@@ -99,6 +99,9 @@ import { useDispatch, useSelector } from "react-redux";
 import { fetchAllCategories } from "./redux/actions/categories";
 import SnackBarComponent from "./components/SnackbarComponent";
 import Router from "./router";
+import { AdminAdoption } from './components/Admin-Adoption';
+import { AdminUsers } from './components/Admin-Users';
+import { AdminLayout } from './components/layouts/admin-layouts';
 
 export const UserContext = createContext();
 
@@ -166,6 +169,12 @@ const App = () => {
           <Route path="/adopt" element={<PetAdoption sections={sections} title="Pet Adoption Center" />} />
           {/* <Route path="/accessories" element={<Petacc />} /> */}
           <Route path="/logout" element={<Logout />} />
+
+          <Route path="/admin" element={<AdminLayout />}>
+              <Route path="users" element={<AdminUsers />} />
+              <Route path="adoption" element={<AdminAdoption />} />
+          </Route>
+
         </Routes>
 
         <Container maxWidth="lg">
