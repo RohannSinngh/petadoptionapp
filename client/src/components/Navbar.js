@@ -248,16 +248,16 @@ const Navbar = () => {
   return (
     <nav
       className="navbar navbar-expand-lg navbar-dark"
-      style={{ backgroundColor: "#007bff" }}
+      style={{ backgroundColor: "Black" }}
     >
       <a className="navbar-brand" href="/">
         PAWFECT FINDS
       </a>
-      <img
+      {/* <img
         src={logo}
         alt="logo"
         style={{ maxWidth: "100px", maxHeight: "50px" }}
-      />
+      /> */}
       <button
         className="navbar-toggler"
         type="button"
