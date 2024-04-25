@@ -102,83 +102,184 @@
 
 // export default Navbar;
 
-
-///////////// the new nav bar on 21st night 
-import React, { useContext } from 'react';
-import 'bootstrap/dist/css/bootstrap.css';
+///////////// the new nav bar on 21st night
+import React, { useContext } from "react";
+import "bootstrap/dist/css/bootstrap.css";
 import { NavLink, useLocation } from "react-router-dom";
 import logo from "../images/logo.png";
-import { UserContext } from '../App';
+import { UserContext } from "../App";
+import { useSelector } from "react-redux";
 
 const Navbar = () => {
   const { state } = useContext(UserContext);
   const location = useLocation();
+  const { user } = useSelector((store) => store);
+
+  console.log(user?.user + "navbar");
 
   const RenderMenu = () => {
     if (state) {
       return (
         <>
-          <li className={`nav-item ${location.pathname === '/' ? 'active' : ''}`}>
-            <NavLink className="nav-link" exact to="/">Home</NavLink>
+          <li
+            className={`nav-item ${location.pathname === "/" ? "active" : ""}`}
+          >
+            <NavLink className="nav-link" exact to="/">
+              Home
+            </NavLink>
           </li>
-          <li className={`nav-item ${location.pathname === '/contact' ? 'active' : ''}`}>
-            <NavLink className="nav-link" to="/contact">Shop</NavLink>
+          <li
+            className={`nav-item ${location.pathname === "/" ? "active" : ""}`}
+          >
+            {user?.user?.isAdmin && (
+              <NavLink className="nav-link" exact to="/admin">
+                Dashboard
+              </NavLink>
+            )}
           </li>
-          <li className={`nav-item ${location.pathname === '/about' ? 'active' : ''}`}>
-            <NavLink className="nav-link" to="/about">About</NavLink>
+          <li
+            className={`nav-item ${
+              location.pathname === "/contact" ? "active" : ""
+            }`}
+          >
+            <NavLink className="nav-link" to="/contact">
+              Shop
+            </NavLink>
           </li>
-          <li className={`nav-item ${location.pathname === '/contact' ? 'active' : ''}`}>
-            <NavLink className="nav-link" to="/contact">Contact</NavLink>
+          <li
+            className={`nav-item ${
+              location.pathname === "/about" ? "active" : ""
+            }`}
+          >
+            <NavLink className="nav-link" to="/about">
+              About
+            </NavLink>
           </li>
-          <li className={`nav-item ${location.pathname === '/logout' ? 'active' : ''}`}>
-            <NavLink className="nav-link" to="/logout">Logout</NavLink>
+          <li
+            className={`nav-item ${
+              location.pathname === "/contact" ? "active" : ""
+            }`}
+          >
+            <NavLink className="nav-link" to="/contact">
+              Contact
+            </NavLink>
+          </li>
+
+          <li
+            className={`nav-item ${
+              location.pathname === "/logout" ? "active" : ""
+            }`}
+          >
+            <NavLink className="nav-link" to="/logout">
+              Logout
+            </NavLink>
           </li>
         </>
       );
     } else {
       return (
         <>
-          <li className={`nav-item ${location.pathname === '/' ? 'active' : ''}`}>
-            <NavLink className="nav-link" exact to="/">Home</NavLink>
+          <li
+            className={`nav-item ${location.pathname === "/" ? "active" : ""}`}
+          >
+            <NavLink className="nav-link" exact to="/">
+              Home
+            </NavLink>
           </li>
-          <li className={`nav-item ${location.pathname === '/contact' ? 'active' : ''}`}>
-            <NavLink className="nav-link" to="/contact">Shop</NavLink>
+          <li
+            className={`nav-item ${
+              location.pathname === "/contact" ? "active" : ""
+            }`}
+          >
+            <NavLink className="nav-link" to="/contact">
+              Shop
+            </NavLink>
           </li>
-          <li className={`nav-item ${location.pathname === '/about' ? 'active' : ''}`}>
-            <NavLink className="nav-link" to="/about">About</NavLink>
+          <li
+            className={`nav-item ${
+              location.pathname === "/about" ? "active" : ""
+            }`}
+          >
+            <NavLink className="nav-link" to="/about">
+              About
+            </NavLink>
           </li>
-          <li className={`nav-item ${location.pathname === '/contact' ? 'active' : ''}`}>
-            <NavLink className="nav-link" to="/contact">Contact</NavLink>
+          <li
+            className={`nav-item ${
+              location.pathname === "/contact" ? "active" : ""
+            }`}
+          >
+            <NavLink className="nav-link" to="/contact">
+              Contact
+            </NavLink>
           </li>
-          <li className={`nav-item ${location.pathname === '/login' ? 'active' : ''}`}>
-            <NavLink className="nav-link" to="/login">Login</NavLink>
+          <li
+            className={`nav-item ${
+              location.pathname === "/login" ? "active" : ""
+            }`}
+          >
+            <NavLink className="nav-link" to="/login">
+              Login
+            </NavLink>
           </li>
-          <li className={`nav-item ${location.pathname === '/signup' ? 'active' : ''}`}>
-            <NavLink className="nav-link" to="/signup">Signup</NavLink>
+          <li
+            className={`nav-item ${
+              location.pathname === "/signup" ? "active" : ""
+            }`}
+          >
+            <NavLink className="nav-link" to="/signup">
+              Signup
+            </NavLink>
           </li>
-          <li className={`nav-item ${location.pathname === '/logout' ? 'active' : ''}`}>
-            <NavLink className="nav-link" to="/logout">Logout</NavLink>
+          <li
+            className={`nav-item ${
+              location.pathname === "/logout" ? "active" : ""
+            }`}
+          >
+            <NavLink className="nav-link" to="/logout">
+              Logout
+            </NavLink>
           </li>
         </>
       );
     }
-  }
+  };
 
   return (
-    <nav className="navbar navbar-expand-lg navbar-dark" style={{ backgroundColor: '#007bff' }}>
-      <a className="navbar-brand" href="/">PAWFECT FINDS</a>
-      <img src={logo} alt="logo" style={{ maxWidth: '100px', maxHeight: '50px' }} />
-      <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <nav
+      className="navbar navbar-expand-lg navbar-dark"
+      style={{ backgroundColor: "#007bff" }}
+    >
+      <a className="navbar-brand" href="/">
+        PAWFECT FINDS
+      </a>
+      <img
+        src={logo}
+        alt="logo"
+        style={{ maxWidth: "100px", maxHeight: "50px" }}
+      />
+      <button
+        className="navbar-toggler"
+        type="button"
+        data-toggle="collapse"
+        data-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
         <span className="navbar-toggler-icon"></span>
       </button>
 
-      <div className="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
+      <div
+        className="collapse navbar-collapse justify-content-end"
+        id="navbarSupportedContent"
+      >
         <ul className="navbar-nav">
           <RenderMenu />
         </ul>
       </div>
     </nav>
   );
-}
+};
 
 export default Navbar;

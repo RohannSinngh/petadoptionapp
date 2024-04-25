@@ -3,6 +3,7 @@ const fs = require("fs");
 const path = require("path");
 
 exports.getAll = async (req, res) => {
+  console.log("enter");
   try {
     const pets = await Pet.find().populate("category");
 
@@ -39,7 +40,8 @@ exports.getByCategory = async (req, res) => {
 
 exports.create = async (req, res) => {
   try {
-    const { name, age, breed, color, description, imageLabel, category } = req.body;
+    const { name, age, breed, color, description, imageLabel, category } =
+      req.body;
     const { image, additionalImages } = req.files;
 
     let imagePath = "";
