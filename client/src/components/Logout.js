@@ -1,6 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import React, { useContext, useEffect } from "react";
-import { UserContext } from "../App";
+import React, { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { logout } from "../redux/auth/action";
 
@@ -9,9 +8,8 @@ const Logout = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(logout(navigate));
-  }, [navigate]);
-
+    dispatch(logout()).then(navigate("/login"));
+  }, []);
   return <div style={{ textAlign: "center", marginTop: "20vh" }}></div>;
 };
 

@@ -1,9 +1,10 @@
+import { thunk } from "redux-thunk";
 import rootReducer from ".";
-import { configureStore } from "@reduxjs/toolkit";
+import { applyMiddleware, legacy_createStore } from "@reduxjs/toolkit";
 
-const store = configureStore(
-  { reducer: rootReducer },
-  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
-);
+// const store = configureStore(
+//   { reducer: rootReducer },
+//   window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+// );
 
-export default store;
+export const store = legacy_createStore(rootReducer, applyMiddleware(thunk));

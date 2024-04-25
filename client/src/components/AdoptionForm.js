@@ -6,8 +6,8 @@ import Button from "@mui/material/Button";
 import { Controller, useForm } from "react-hook-form";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { createAAdoption } from "../redux/actions/adoptions";
 import { useDispatch } from "react-redux";
+import { adopt } from "../redux/adoption/action";
 
 const schema = yup
   .object({
@@ -32,7 +32,7 @@ const AdoptionForm = ({ closeModal, pet }) => {
       email: "",
       phone: "",
       address: "",
-      pet:pet
+      pet: pet,
     },
     resolver: yupResolver(schema),
   });
@@ -40,7 +40,8 @@ const AdoptionForm = ({ closeModal, pet }) => {
   const dispatch = useDispatch();
 
   const onSubmit = (data) => {
-    createAAdoption({ dispatch, payload: data });
+    // createAAdoption({ dispatch, payload: data });
+    dispatch(adopt({ payload: data }));
     closeModal();
   };
 
@@ -144,9 +145,6 @@ const AdoptionForm = ({ closeModal, pet }) => {
 
 export default AdoptionForm;
 
-
-
-
 // import React, { useState } from "react";
 // import { useDispatch } from "react-redux";
 // import { createAdoption } from "../redux/actions/adoptions";
@@ -190,7 +188,7 @@ export default AdoptionForm;
 //         placeholder="First Name"
 //       />
 //       {errors.firstName && <p>{errors.firstName}</p>}
-      
+
 //       <input
 //         type="text"
 //         name="lastName"
@@ -199,7 +197,7 @@ export default AdoptionForm;
 //         placeholder="Last Name"
 //       />
 //       {errors.lastName && <p>{errors.lastName}</p>}
-      
+
 //       <input
 //         type="email"
 //         name="email"
@@ -208,7 +206,7 @@ export default AdoptionForm;
 //         placeholder="Email"
 //       />
 //       {errors.email && <p>{errors.email}</p>}
-      
+
 //       <input
 //         type="text"
 //         name="phone"
@@ -217,7 +215,7 @@ export default AdoptionForm;
 //         placeholder="Phone Number"
 //       />
 //       {errors.phone && <p>{errors.phone}</p>}
-      
+
 //       <input
 //         type="text"
 //         name="address"
@@ -226,7 +224,7 @@ export default AdoptionForm;
 //         placeholder="Address"
 //       />
 //       {errors.address && <p>{errors.address}</p>}
-      
+
 //       <button type="submit">Adopt</button>
 //       <button type="button" onClick={closeModal}>
 //         Cancel

@@ -1,6 +1,5 @@
 import React, { useContext } from "react";
 import { useState } from "react";
-import { UserContext } from "../App";
 import loginimg from "../images/login.png";
 import { NavLink, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
@@ -9,7 +8,6 @@ import { getUser, login } from "../redux/auth/action";
 const Login = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const { auth } = useSelector((store) => store);
 
   const [formData, setFormData] = useState({
     email: "",
@@ -30,14 +28,12 @@ const Login = () => {
       window.alert("Invalid password");
       return;
     }
-    dispatch(login(formData, navigate));
-    dispatch(getUser());
-    console.log("my debug" + auth?.user?.isAdmin);
-    if (auth?.user?.isAdmin) {
-      navigate("/admin");
-    } else {
-      navigate("/");
-    }
+    dispatch(login(formData))
+      .then(() => dispatch(getUser()))
+      .then(() => navigate("/"))
+      .catch((error) => {
+        console.error("Error during login:", error);
+      });
   };
 
   return (

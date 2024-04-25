@@ -2,16 +2,16 @@ import React, { useEffect } from "react";
 import Grid from "@mui/material/Grid";
 import FeaturedPet from "../../components/FeaturedPet";
 import { useParams } from "react-router-dom";
-import { fetchPetsByCategory } from "../../redux/actions/pets";
 import { useDispatch, useSelector } from "react-redux";
+import { fetchPetsByCategory } from "../../redux/pets/action";
 
 const CategorizedAnimalsPage = () => {
   const { category } = useParams();
   const dispatch = useDispatch();
-  const petsByCategory = useSelector((state) => state.pets.petsByCategory);
+  const petsByCategory = useSelector((store) => store.pets.petsByCategory);
 
   useEffect(() => {
-    fetchPetsByCategory({ dispatch, payload: { category } });
+    dispatch(fetchPetsByCategory({ payload: category }));
   }, [category]);
 
   return (

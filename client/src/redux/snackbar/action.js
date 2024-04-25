@@ -1,13 +1,15 @@
-import { HIDE_SNACKBAR, SHOW_SNACKBAR } from "../actionTypes/snackbar";
+import { SHOW_SNACKBAR, HIDE_SNACKBAR } from "./actionType";
 
-export const showSnackbar = ({ dispatch, payload }) => {
-  dispatch({
-    type: SHOW_SNACKBAR,
-    payload,
-  });
-};
+export const showSnackbar =
+  ({ payload }) =>
+  (dispatch) => {
+    dispatch({
+      type: SHOW_SNACKBAR,
+      payload,
+    });
+  };
 
-export const hideSnackbar = ({ dispatch }) => {
+export const hideSnackbar = () => (dispatch) => {
   dispatch({
     type: HIDE_SNACKBAR,
   });
