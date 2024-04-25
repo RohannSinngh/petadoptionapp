@@ -43,15 +43,38 @@ const Login = () => {
         justifyContent: "center",
         alignItems: "center",
         height: "100vh",
+        // background:"black",
+        // color:"white"
       }}
     >
-      <div>
-        <h2 className="form-title">Login</h2>{" "}
+      <div style={{display:"flex", width: "100vw"}}>
+      <div className="login-image" style={{background:"#b9d1fd",  height:"100vh",width:"50vw", display:"flex", flexDirection:"column", justifyContent:"center", alignItems:"center"}}>
+            <figure>
+              <img
+                src={loginimg}
+                alt="registration pic"
+                style={{ Width: "1000px"}}
+              />
+            </figure>
+            <div style={{padding:"5px 15px"}}>
+              <h1 style={{fontSize:"15px", fontWeight:"bold"}}>Welcome to Pawfect Finds! Login to discover your new furry companion and begin your journey towards finding the perfect pet companion. <br /> <br />
+              Sign in to Pawfect Finds and explore a world of adorable pets waiting to be adopted. Your next best friend is just a login away! <br /> <br />
+              Login to Find Your Pawfect Companion <br /> <br />
+              Not a member yet? Join Pawfect Finds today and embark on a heartwarming journey of pet adoption!</h1>
+            </div>
+          </div>
+        <div style={{display:"flex", flexDirection:"column", justifyContent:"center", alignItems:"center", width:"50vw"}}>
+        <h1 className="form-title" style={{display:"flex", justifyContent:"center", fontSize:"50px", fontWeight:"bolder", position:"relative", top:"120px"}}>Login</h1>{" "}
         {/* Placed the title above the form */}
-        <form onSubmit={handleLogin}>
-          <div>
-            <label htmlFor="email">Your Email:</label>
-            <input
+        <form onSubmit={handleLogin} style={{display:"flex", flexDirection:"column", height:"100%", justifyContent:"center", gap:"30px"}}>
+          <div style={{display:"flex", flexDirection:"column"}}>
+            <label htmlFor="email" style={{fontSize:"20px", fontWeight:"bold"}} >Your Email:</label>
+            <input style={{padding: ' 3px 10px',
+          border: '2px solid #ccc',
+          borderRadius: '5px',
+          fontSize: '16px',
+          width: '300px',
+          boxShadow: '2px 2px 5px rgba(0, 0, 0, 0.1)',}}
               type="email"
               id="email"
               name="email"
@@ -60,8 +83,8 @@ const Login = () => {
               required
             />
           </div>
-          <div>
-            <label htmlFor="password">Password:</label>
+          <div style={{display:"flex", flexDirection:"column"}}>
+            <label htmlFor="password" style={{fontSize:"20px", fontWeight:"bold"}}>Password:</label>
             <input
               type="password"
               id="password"
@@ -69,6 +92,12 @@ const Login = () => {
               value={formData.password}
               onChange={handleChange}
               required
+              style={{padding: ' 3px 10px',
+          border: '2px solid #ccc',
+          borderRadius: '5px',
+          fontSize: '16px',
+          width: '300px',
+          boxShadow: '2px 2px 5px rgba(0, 0, 0, 0.1)'}}
             />
           </div>
 
@@ -82,21 +111,18 @@ const Login = () => {
               value="Login"
             />
           </div>
-
-          <div className="login-image">
-            <figure>
-              <img
-                src={loginimg}
-                alt="registration pic"
-                style={{ maxWidth: "400px", height: "auto" }}
-              />
-            </figure>
-            <NavLink to="/signup" className="signup-image-link">
+          <NavLink to="/signup" className="signup-image-link" style={{width: "306px",
+    padding: "8px 10px",
+    display: "flex",
+    textAlign: "center",
+    justifyContent: "center", background:"rgb(77 115 184)", color:"white", borderRadius:"10px", position:"relative", bottom:"20px", }}>
               {" "}
               I Still Have To Register
             </NavLink>
+
+          </form>
           </div>
-        </form>
+        
       </div>
     </div>
   );

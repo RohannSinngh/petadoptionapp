@@ -76,50 +76,200 @@ const Contact = () => {
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
-        padding: "20px",
+        gap: "50px",
       }}
     >
+      <div style={{}}>
+        <div
+          /*className="signup-image "*/ style={{
+            width: "50vw",
+            background: "#3E8EDE",
+            color: "white",
+            height: "100vh",
+            display: "flex",
+            justifyContent: "center",
+            textAlign: "center",
+            fontFamily: "system-ui",
+            alignItems: "center",
+            flexDirection: "column",
+            padding: "10px 50px",
+          }}
+        >
+          <figure>
+            <img
+              src={contact}
+              alt="registration pic"
+              style={{ width: "80%" }}
+            />
+          </figure>
+          <ul style={{ fontSize: "17px", textAlign: "initial" }}>
+            <li>
+              Have questions or feedback? Get in touch with us! Our team at
+              Pawfect Finds is here to assist you and ensure a smooth adoption
+              experience.
+            </li>
+            <li>
+              Reach out to Pawfect Finds with your inquiries or suggestions.
+              We're eager to hear from you and help you with any pet
+              adoption-related queries!
+            </li>
+            <li>Contact Us</li>
+            <li>
+              Thank you for considering Pawfect Finds. Your input matters to us
+              as we strive to make pet adoption a joyful and fulfilling
+              experience for all
+            </li>
+            <li>
+              Maintain a professional yet friendly tone on the "Contact Us"
+              page. Use clear contact information, such as email addresses or a
+              contact form, and reassure users that their messages will be
+              attended to promptly.
+            </li>
+          </ul>
+        </div>
+      </div>
       <div style={{ maxWidth: "600px" }}>
-        <h2 style={{ marginBottom: "20px" }}>GET IN TOUCH WITH US</h2>
+        <h2
+          style={{
+            marginBottom: "20px",
+            fontSize: "40px",
+            fontWeight: "bolder",
+            fontFamily: "system-ui",
+          }}
+        >
+          GET IN TOUCH WITH US
+        </h2>
         <form>
-          <div style={{ marginBottom: "20px" }}>
-            <label htmlFor="name">Name:</label>
+          <div
+            style={{
+              marginBottom: "20px",
+              display: "flex",
+              flexDirection: "column",
+            }}
+          >
+            <label
+              htmlFor="name"
+              style={{
+                fontFamily: "math",
+                fontSize: "23px",
+                fontWeight: "bold",
+              }}
+            >
+              Name:
+            </label>
             <input
               type="text"
               id="name"
               name="name"
+              style={{
+                padding: " 3px 10px",
+                border: "2px solid #ccc",
+                borderRadius: "5px",
+                fontSize: "16px",
+                width: "300px",
+                boxShadow: "2px 2px 5px rgba(0, 0, 0, 0.1)",
+              }}
               value={userData.name}
               onChange={handleChange}
               required
             />
           </div>
-          <div style={{ marginBottom: "20px" }}>
-            <label htmlFor="email">Email:</label>
+          <div
+            style={{
+              marginBottom: "20px",
+              display: "flex",
+              flexDirection: "column",
+            }}
+          >
+            <label
+              htmlFor="email"
+              style={{
+                fontFamily: "math",
+                fontSize: "23px",
+                fontWeight: "bold",
+              }}
+            >
+              Email:
+            </label>
             <input
               type="email"
               id="email"
+              style={{
+                padding: " 3px 10px",
+                border: "2px solid #ccc",
+                borderRadius: "5px",
+                fontSize: "16px",
+                width: "300px",
+                boxShadow: "2px 2px 5px rgba(0, 0, 0, 0.1)",
+              }}
               name="email"
               value={userData.email}
               onChange={handleChange}
               required
             />
           </div>
-          <div style={{ marginBottom: "20px" }}>
-            <label htmlFor="phone">Phone:</label>
+          <div
+            style={{
+              marginBottom: "20px",
+              display: "flex",
+              flexDirection: "column",
+            }}
+          >
+            <label
+              htmlFor="phone"
+              style={{
+                fontFamily: "math",
+                fontSize: "23px",
+                fontWeight: "bold",
+              }}
+            >
+              Phone:
+            </label>
             <input
               type="tel"
               id="phone"
               name="phone"
+              style={{
+                padding: " 3px 10px",
+                border: "2px solid #ccc",
+                borderRadius: "5px",
+                fontSize: "16px",
+                width: "300px",
+                boxShadow: "2px 2px 5px rgba(0, 0, 0, 0.1)",
+              }}
               value={userData.phone}
               onChange={handleChange}
               required
             />
           </div>
-          <div style={{ marginBottom: "20px" }}>
-            <label htmlFor="message">Message:</label>
+          <div
+            style={{
+              marginBottom: "20px",
+              display: "flex",
+              flexDirection: "column",
+            }}
+          >
+            <label
+              htmlFor="message"
+              style={{
+                fontFamily: "math",
+                fontSize: "23px",
+                fontWeight: "bold",
+              }}
+            >
+              Message:
+            </label>
             <textarea
               id="message"
               name="message"
+              style={{
+                padding: " 3px 10px",
+                border: "2px solid #ccc",
+                borderRadius: "5px",
+                fontSize: "16px",
+                width: "300px",
+                boxShadow: "2px 2px 5px rgba(0, 0, 0, 0.1)",
+              }}
               value={userData.message}
               onChange={handleChange}
               required
@@ -134,14 +284,25 @@ const Contact = () => {
               color: "#fff",
               border: "none",
               cursor: "pointer",
+              width: "100%",
+              borderRadius: "7px",
             }}
           >
             Send
           </button>
         </form>
         <div style={{ marginTop: "20px" }}>
-          <h5>Send us your query or Contact us through Social Media</h5>
-          <ul style={{ listStyleType: "none", padding: 0 }}>
+          <h5 style={{ fontFamily: "system-ui" }}>
+            Send us your query or Contact us through Social Media
+          </h5>
+          <ul
+            style={{
+              listStyleType: "none",
+              padding: 0,
+              display: "flex",
+              justifyContent: "space-around",
+            }}
+          >
             <li>
               <a
                 href="https://www.instagram.com/pawfect.finds.pets"
@@ -156,6 +317,14 @@ const Contact = () => {
                 style={{ color: "#007bff", textDecoration: "none" }}
               >
                 Twitter
+              </a>
+            </li>
+            <li>
+              <a
+                href="https://twitter.com/Ibiza2412"
+                style={{ color: "#007bff", textDecoration: "none" }}
+              >
+                Facebook
               </a>
             </li>
             {/* Add more social media links as needed */}
