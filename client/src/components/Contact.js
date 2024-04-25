@@ -76,10 +76,10 @@ const Contact = () => {
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
-        gap:"50px"
+        gap: "50px",
       }}
     >
-      <div style={{ }}>
+      <div style={{}}>
         <div
           /*className="signup-image "*/ style={{
             width: "50vw",
@@ -90,19 +90,19 @@ const Contact = () => {
             justifyContent: "center",
             textAlign: "center",
             fontFamily: "system-ui",
-            alignItems:"center",
-            flexDirection:"column",
-            padding:"10px 50px"
+            alignItems: "center",
+            flexDirection: "column",
+            padding: "10px 50px",
           }}
         >
           <figure>
             <img
               src={contact}
               alt="registration pic"
-              style={{width:"80%"}}
+              style={{ width: "80%" }}
             />
           </figure>
-          <ul style={{fontSize:"17px", textAlign:"initial"}}>
+          <ul style={{ fontSize: "17px", textAlign: "initial" }}>
             <li>
               Have questions or feedback? Get in touch with us! Our team at
               Pawfect Finds is here to assist you and ensure a smooth adoption
@@ -331,7 +331,17 @@ const Contact = () => {
           </ul>
         </div>
       </div>
-      
+      <div style={{ marginLeft: "20px" }}>
+        <div className="signup-image">
+          <figure>
+            <img
+              src={contact}
+              alt="registration pic"
+              style={{ maxWidth: "500px", height: "auto" }}
+            />
+          </figure>
+        </div>
+      </div>
     </div>
   );
 };

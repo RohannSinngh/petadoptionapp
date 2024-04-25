@@ -11,7 +11,6 @@ import {
   REGISTER_REQUEST,
   REGISTER_SUCCESS,
 } from "./actionType";
-import { Navigate, useNavigate } from "react-router-dom";
 
 //register
 const registerRequest = () => ({ type: REGISTER_REQUEST });
@@ -60,7 +59,7 @@ export const register = (userData, navigate) => async (dispatch) => {
   }
 };
 
-export const login = (loginData, navigate) => async (dispatch) => {
+export const login = (loginData) => async (dispatch) => {
   dispatch(loginRequest());
 
   try {
@@ -89,7 +88,6 @@ export const login = (loginData, navigate) => async (dispatch) => {
 
 export const getUser = () => async (dispatch) => {
   dispatch(getUserDataRequest());
-
   try {
     const res = await fetch("/about", {
       method: "GET",
@@ -105,34 +103,32 @@ export const getUser = () => async (dispatch) => {
       throw new Error("Failed to fetch data");
     }
     dispatch(getUserDataSuccess(data));
-    console.log("getUser action ", data);
+    console.log("getUser action", data);
   } catch (err) {
     console.log("Error fetching data:", err);
     dispatch(getUserDataFailure(err));
   }
 };
 
-export const logout = (navigate) => (dispatch) => {
-  fetch("/logout", {
-    method: "GET",
-    headers: {
-      Accept: "application/json",
-      "Content-Type": "application/json",
-    },
-    credentials: "include",
-  })
-    .then((res) => res.json())
-    .then((data) => {
-      dispatch({ type: LOGOUT, payload: false });
-
-      if (data.message === "User LogOut Successfully") {
-        window.alert("Logout Successfully!");
-      } else if (data.error === "Login first") {
-        window.alert("Login first!");
-      }
-      navigate("/login", { replace: true });
-    })
-    .catch((err) => {
-      console.log(err);
+export const logout = () => async (dispatch) => {
+  try {
+    const res = await fetch("/logout", {
+      method: "GET",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+      credentials: "include",
     });
+    const data = await res.json();
+    console.log(data);
+    dispatch({ type: LOGOUT, payload: false });
+    if (data.message === "User LogOut Successfully") {
+      window.alert("Logout Successfully!");
+    } else if (data.error === "Login first") {
+      window.alert("Login first!");
+    }
+  } catch (err) {
+    console.log(err);
+  }
 };

@@ -1,8 +1,8 @@
 import { combineReducers } from "@reduxjs/toolkit";
-import categoriesReducer from "./reducers/categories";
-import petsReducer from "./reducers/pets";
-import snackbarReducer from "./reducers/snackbar";
+import categoriesReducer from "./categories/reducer";
+import petsReducer from "./pets/reducer";
 import { authReducer } from "./auth/reducer";
+import snackbarReducer from "./snackbar/reducer";
 
 const rootReducer = combineReducers({
   auth: authReducer,

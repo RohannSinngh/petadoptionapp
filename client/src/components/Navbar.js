@@ -107,18 +107,14 @@ import React, { useContext } from "react";
 import "bootstrap/dist/css/bootstrap.css";
 import { NavLink, useLocation } from "react-router-dom";
 import logo from "../images/logo.png";
-import { UserContext } from "../App";
 import { useSelector } from "react-redux";
 
 const Navbar = () => {
-  const { state } = useContext(UserContext);
   const location = useLocation();
-  const { user } = useSelector((store) => store);
-
-  console.log(user?.user + "navbar");
+  const { auth } = useSelector((store) => store);
 
   const RenderMenu = () => {
-    if (state) {
+    if (auth?.user) {
       return (
         <>
           <li
@@ -129,20 +125,11 @@ const Navbar = () => {
             </NavLink>
           </li>
           <li
-            className={`nav-item ${location.pathname === "/" ? "active" : ""}`}
-          >
-            {user?.user?.isAdmin && (
-              <NavLink className="nav-link" exact to="/admin">
-                Dashboard
-              </NavLink>
-            )}
-          </li>
-          <li
             className={`nav-item ${
-              location.pathname === "/contact" ? "active" : ""
+              location.pathname === "/shop" ? "active" : ""
             }`}
           >
-            <NavLink className="nav-link" to="/contact">
+            <NavLink className="nav-link" to="/shop">
               Shop
             </NavLink>
           </li>
@@ -188,20 +175,11 @@ const Navbar = () => {
           </li>
           <li
             className={`nav-item ${
-              location.pathname === "/contact" ? "active" : ""
+              location.pathname === "/shop" ? "active" : ""
             }`}
           >
-            <NavLink className="nav-link" to="/contact">
+            <NavLink className="nav-link" to="/shop">
               Shop
-            </NavLink>
-          </li>
-          <li
-            className={`nav-item ${
-              location.pathname === "/about" ? "active" : ""
-            }`}
-          >
-            <NavLink className="nav-link" to="/about">
-              About
             </NavLink>
           </li>
           <li
@@ -229,15 +207,6 @@ const Navbar = () => {
           >
             <NavLink className="nav-link" to="/signup">
               Signup
-            </NavLink>
-          </li>
-          <li
-            className={`nav-item ${
-              location.pathname === "/logout" ? "active" : ""
-            }`}
-          >
-            <NavLink className="nav-link" to="/logout">
-              Logout
             </NavLink>
           </li>
         </>

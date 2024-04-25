@@ -1,7 +1,4 @@
-import {
-  GET_ALL_CATEGORIES,
-  SET_CATEGORIES_LOADER,
-} from "../actionTypes/categories";
+import { GET_ALL_CATEGORIES, SET_CATEGORIES_LOADER } from "./actionType";
 
 const initialState = {
   allCategories: [],

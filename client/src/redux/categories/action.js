@@ -1,12 +1,7 @@
 import { getAllCategories } from "../../services/categories";
-import {
-  GET_ALL_CATEGORIES,
-  SET_CATEGORIES_LOADER,
-} from "../actionTypes/categories";
+import { GET_ALL_CATEGORIES, SET_CATEGORIES_LOADER } from "./actionType";
 
-// Action creator returning a function (thunk)
-// export const fetchAllCategories = () => (dispatch) => {
-export const fetchAllCategories = ({ dispatch }) => {
+export const fetchAllCategories = () => (dispatch) => {
   dispatch({
     type: SET_CATEGORIES_LOADER,
     payload: true,

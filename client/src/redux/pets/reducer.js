@@ -3,7 +3,7 @@ import {
   GET_PETS_BY_CATEGORY,
   SET_PETS_LOADER,
   GET_PET_BY_ID,
-} from "../actionTypes/pets";
+} from "./actionType";
 
 const initialState = {
   allPets: [],

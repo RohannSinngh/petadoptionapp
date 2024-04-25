@@ -4,7 +4,8 @@ export const getAllPets = () => {
   return axiosInstance.get("/pets/all");
 };
 
-export const getPetsByCategory = ({ category }) => {
+export const getPetsByCategory = (category) => {
+  console.log(category);
   return axiosInstance.get(`/pets/category/${category}`);
 };
 

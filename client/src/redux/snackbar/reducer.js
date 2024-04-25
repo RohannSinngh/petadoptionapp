@@ -1,4 +1,4 @@
-import { HIDE_SNACKBAR, SHOW_SNACKBAR } from "../actionTypes/snackbar";
+import { HIDE_SNACKBAR, SHOW_SNACKBAR } from "./actionType";
 
 const initialState = {
   open: false,

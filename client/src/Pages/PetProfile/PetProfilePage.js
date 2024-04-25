@@ -11,9 +11,9 @@ import Box from "@mui/material/Box";
 import Modal from "@mui/material/Modal";
 import AdoptionForm from "../../components/AdoptionForm";
 import "react-medium-image-zoom/dist/styles.css";
-import { fetchPetById } from "../../redux/actions/pets";
 import { useDispatch, useSelector } from "react-redux";
 import { BACKEND_URI } from "../../utils/constants";
+import { fetchPetById } from "../../redux/pets/action";
 
 const style = {
   position: "absolute",
@@ -36,7 +36,7 @@ const PetProfilePage = () => {
   const selectedPet = useSelector((state) => state.pets.selectedPet);
 
   useEffect(() => {
-    fetchPetById({ dispatch, payload: { id } });
+    dispatch(fetchPetById({ payload: { id } }));
   }, [id]);
 
   const images = useMemo(() =>
@@ -111,7 +111,7 @@ const PetProfilePage = () => {
               Adoption Form
             </Typography>
             {/* <AdoptionForm closeModal={() => setOpen(false)} /> */}
-            <AdoptionForm closeModal={() => setOpen(false)} pet={id}/>
+            <AdoptionForm closeModal={() => setOpen(false)} pet={id} />
           </Box>
         </Modal>
       </Grid>
