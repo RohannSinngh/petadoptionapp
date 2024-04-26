@@ -22,10 +22,23 @@ const AdoptionSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
+    aadharNumber: {
+      type: String,
+      required: true,
+    },
+    status: {
+      type: String,
+      required: true,
+    },
     pet: {
       type: mongoose.Schema.Types.ObjectId,
       ref: "Pet",
-      required:true,
+      required: true,
+    },
+    user: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "USER",
+      required: true,
     },
   },
   {

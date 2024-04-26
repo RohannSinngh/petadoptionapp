@@ -1,0 +1,10 @@
+/* // image slider */
+.image-slider-container {
+    max-width: 1140px; /* Adjust the maximum width of the container as per your requirement */
+    margin: 0 auto; /* Center the container horizontally */
+  }
+  
+  .slider-image {
+    width: 100%; /* Set the width of the images to 100% of their container */
+    height: auto; /* Automatically adjust the height to maintain aspect ratio */
+  }

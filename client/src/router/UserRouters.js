@@ -14,6 +14,7 @@ import PetProfilePage from "../Pages/PetProfile/PetProfilePage";
 import SnackBarComponent from "../components/SnackbarComponent";
 import Test from "../components/Text";
 import AllPets from "../components/AllPets";
+import Shop from "../Pages/Shop";
 
 const UserRouters = () => {
   return (
@@ -31,6 +32,7 @@ const UserRouters = () => {
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
         <Route path="/logout" element={<Logout />} />
+        <Route path="/shop/*" element={<Shop />} />
         <Route path="/">
           <Route index element={<Homepage />} />
           <Route path="/all" element={<AllPets />} />

@@ -24,8 +24,8 @@ const AdminNavbar = () => {
               location.pathname === "/shop" ? "active" : ""
             }`}
           >
-            <NavLink className="nav-link" to="/shop">
-              Shop
+            <NavLink className="nav-link" to="/adoption">
+              Adoption
             </NavLink>
           </li>
           <li
@@ -35,15 +35,6 @@ const AdminNavbar = () => {
           >
             <NavLink className="nav-link" to="/about">
               About
-            </NavLink>
-          </li>
-          <li
-            className={`nav-item ${
-              location.pathname === "/contact" ? "active" : ""
-            }`}
-          >
-            <NavLink className="nav-link" to="/contact">
-              Contact
             </NavLink>
           </li>
 
@@ -70,20 +61,11 @@ const AdminNavbar = () => {
           </li>
           <li
             className={`nav-item ${
-              location.pathname === "/shop" ? "active" : ""
+              location.pathname === "/adoption" ? "active" : ""
             }`}
           >
             <NavLink className="nav-link" to="/shop">
-              Shop
-            </NavLink>
-          </li>
-          <li
-            className={`nav-item ${
-              location.pathname === "/contact" ? "active" : ""
-            }`}
-          >
-            <NavLink className="nav-link" to="/contact">
-              Contact
+              Adoption
             </NavLink>
           </li>
           <li

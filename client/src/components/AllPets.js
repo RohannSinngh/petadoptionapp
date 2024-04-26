@@ -13,7 +13,7 @@ const AllPets = () => {
   }, []);
 
   return (
-    <Grid container spacing={4}>
+    <Grid container spacing={4} sx={{ padding: 10 }}>
       {allPets?.map((pet, index) => (
         <FeaturedPet key={index} pet={pet} />
       ))}
