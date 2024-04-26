@@ -15,11 +15,18 @@ const schema = yup
     lastName: yup.string().required(),
     email: yup.string().required().email("Please enter a valid email"),
     address: yup.string().required(),
-    phone: yup.number().positive().integer().required(),
+    phone: yup
+      .string()
+      .matches(/^[0-9]{10}$/, "Phone number must be 10 digits")
+      .required(),
+    aadharNumber: yup
+      .string()
+      .matches(/^[0-9]{16}$/, "Aadhar number must be 16 digits")
+      .required(),
   })
   .required();
 
-const AdoptionForm = ({ closeModal, pet }) => {
+const AdoptionForm = ({ closeModal, pet, user }) => {
   const {
     handleSubmit,
     control,
@@ -31,8 +38,11 @@ const AdoptionForm = ({ closeModal, pet }) => {
       lastName: "",
       email: "",
       phone: "",
+      aadharNumber: "",
       address: "",
+      user: user,
       pet: pet,
+      status: "Not Approved",
     },
     resolver: yupResolver(schema),
   });
@@ -114,6 +124,21 @@ const AdoptionForm = ({ closeModal, pet }) => {
         />
       </FormControl>
       <FormControl fullWidth sx={{ m: 1 }}>
+        <InputLabel htmlFor="aadharNumber">Aadhar Number</InputLabel>
+        <Controller
+          name="aadharNumber"
+          control={control}
+          render={({ field }) => (
+            <OutlinedInput
+              error={errors.aadharNumber}
+              id="aadharNumber"
+              label="Aadhar Number"
+              {...field}
+            />
+          )}
+        />
+      </FormControl>
+      <FormControl fullWidth sx={{ m: 1 }}>
         <InputLabel htmlFor="address">Address</InputLabel>
         <Controller
           name="address"
@@ -144,93 +169,3 @@ const AdoptionForm = ({ closeModal, pet }) => {
 };
 
 export default AdoptionForm;
-
-// import React, { useState } from "react";
-// import { useDispatch } from "react-redux";
-// import { createAdoption } from "../redux/actions/adoptions";
-
-// const AdoptionForm = ({ closeModal }) => {
-//   const dispatch = useDispatch();
-//   const [formData, setFormData] = useState({
-//     firstName: "",
-//     lastName: "",
-//     email: "",
-//     phone: "",
-//     address: "",
-//   });
-//   const [errors, setErrors] = useState({});
-
-//   const handleChange = (e) => {
-//     setFormData({
-//       ...formData,
-//       [e.target.name]: e.target.value,
-//     });
-//   };
-
-//   const handleSubmit = async (e) => {
-//     e.preventDefault();
-//     try {
-//       await dispatch(createAdoption(formData));
-//       closeModal();
-//     } catch (error) {
-//       // Handle error response from server
-//       setErrors(error.response.data.errors);
-//     }
-//   };
-
-//   return (
-//     <form onSubmit={handleSubmit}>
-//       <input
-//         type="text"
-//         name="firstName"
-//         value={formData.firstName}
-//         onChange={handleChange}
-//         placeholder="First Name"
-//       />
-//       {errors.firstName && <p>{errors.firstName}</p>}
-
-//       <input
-//         type="text"
-//         name="lastName"
-//         value={formData.lastName}
-//         onChange={handleChange}
-//         placeholder="Last Name"
-//       />
-//       {errors.lastName && <p>{errors.lastName}</p>}
-
-//       <input
-//         type="email"
-//         name="email"
-//         value={formData.email}
-//         onChange={handleChange}
-//         placeholder="Email"
-//       />
-//       {errors.email && <p>{errors.email}</p>}
-
-//       <input
-//         type="text"
-//         name="phone"
-//         value={formData.phone}
-//         onChange={handleChange}
-//         placeholder="Phone Number"
-//       />
-//       {errors.phone && <p>{errors.phone}</p>}
-
-//       <input
-//         type="text"
-//         name="address"
-//         value={formData.address}
-//         onChange={handleChange}
-//         placeholder="Address"
-//       />
-//       {errors.address && <p>{errors.address}</p>}
-
-//       <button type="submit">Adopt</button>
-//       <button type="button" onClick={closeModal}>
-//         Cancel
-//       </button>
-//     </form>
-//   );
-// };
-
-// export default AdoptionForm;

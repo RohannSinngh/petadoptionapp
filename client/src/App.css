@@ -23,14 +23,14 @@ body {
 /* Header styles */
 header {
   background-color: #007bff;
-  color: #fff;
+  color: #ff8c3f;
   padding: 10px 0;
   text-align: center;
 }
 
 /* Navbar styles */
 .navbar {
-  background-color: #333;
+  background-color: #581c1c;
   padding: 10px 0;
 }
 
@@ -44,9 +44,18 @@ header {
 }
 
 .navbar a {
-  color: #fff;
+  color: #f5d43f;
   text-decoration: none;
 }
+
+.navbar-nav .nav-item.active .nav-link {
+  /* background-color: #ffffff; Set the background color of the active tab */
+  color: #007bff; /* Set the text color of the active tab */
+  border-radius: 0.25rem; /* Add some border radius for a rounded look */
+  font-weight: bold; /* Make the text bold */
+}
+
+
 
 /* Footer styles */
 footer {
@@ -118,7 +127,6 @@ footer {
 /* navbar.css */
 
 .navbar-nav .nav-item.active .nav-link {
-  background-color: #ffffff; /* Set the background color of the active tab */
   color: #007bff; /* Set the text color of the active tab */
   border-radius: 0.25rem; /* Add some border radius for a rounded look */
   font-weight: bold; /* Make the text bold */

@@ -14,6 +14,7 @@ import "react-medium-image-zoom/dist/styles.css";
 import { useDispatch, useSelector } from "react-redux";
 import { BACKEND_URI } from "../../utils/constants";
 import { fetchPetById } from "../../redux/pets/action";
+import { getUser } from "../../redux/auth/action";
 
 const style = {
   position: "absolute",
@@ -34,9 +35,11 @@ const PetProfilePage = () => {
 
   const dispatch = useDispatch();
   const selectedPet = useSelector((state) => state.pets.selectedPet);
+  const user = useSelector((state) => state.auth.user);
 
   useEffect(() => {
     dispatch(fetchPetById({ payload: { id } }));
+    dispatch(getUser());
   }, [id]);
 
   const images = useMemo(() =>
@@ -51,7 +54,12 @@ const PetProfilePage = () => {
   );
 
   return (
-    <Grid container rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
+    <Grid
+      container
+      rowSpacing={1}
+      columnSpacing={{ xs: 1, sm: 2, md: 3 }}
+      sx={{ padding: 10 }}
+    >
       <Grid item xs={12} md={6}>
         <ImageList sx={{ height: 600 }} variant="woven" cols={3} gap={8}>
           {images?.map((item) => (
@@ -111,7 +119,11 @@ const PetProfilePage = () => {
               Adoption Form
             </Typography>
             {/* <AdoptionForm closeModal={() => setOpen(false)} /> */}
-            <AdoptionForm closeModal={() => setOpen(false)} pet={id} />
+            <AdoptionForm
+              closeModal={() => setOpen(false)}
+              pet={id}
+              user={user}
+            />
           </Box>
         </Modal>
       </Grid>

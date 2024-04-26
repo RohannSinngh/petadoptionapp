@@ -151,7 +151,6 @@ const Navbar = () => {
               Contact
             </NavLink>
           </li>
-
           <li
             className={`nav-item ${
               location.pathname === "/logout" ? "active" : ""
@@ -217,7 +216,7 @@ const Navbar = () => {
   return (
     <nav
       className="navbar navbar-expand-lg navbar-dark"
-      style={{ backgroundColor: "Black" }}
+      style={{ backgroundColor: "Black", padding: "15px" }}
     >
       <a className="navbar-brand" href="/">
         PAWFECT FINDS
